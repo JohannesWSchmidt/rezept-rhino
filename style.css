@@ -92,3 +92,11 @@ footer {
 }
 
 footer a { color: var(--muted); }
+
+/* r/ — the landing page of a shared recipe (docs/SPEC-1.6.md F3) */
+code.code {
+  font: 600 1.15rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  white-space: nowrap;
+}

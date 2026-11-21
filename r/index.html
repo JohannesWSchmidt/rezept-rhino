@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Ein Rezept für dich · Rezept-Rhino</title>
+<link rel="stylesheet" href="../style.css">
+<script>
+  // The only script on the site (site/README.md): it reads the share code from the link, shows
+  // it, and hands the link to Safari's Smart App Banner, whose "Öffnen" passes it to the app.
+  // Nothing is loaded and nothing is sent anywhere.
+  (function () {
+    var alphabet = /^[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{8}$/;
+    var raw = new URLSearchParams(location.search).get("c") || "";
+    var code = raw.toUpperCase().replace(/[\s-]/g, "");
+    window.rhinoShareCode = alphabet.test(code) ? code : null;
+    var argument = window.rhinoShareCode
+      ? "https://johanneswschmidt.github.io/rezept-rhino/r/?c=" + window.rhinoShareCode
+      : "";
+    // Written while the head is parsed, so Safari sees the banner on first load.
+    document.write('<meta name="apple-itunes-app" content="app-id=6811577370'
+      + (argument ? ', app-argument=' + argument : '') + '">');
+  })();
+</script>
+</head>
+<body>
+<header class="site">
+  <a class="home" href="../">Rezept-Rhino</a>
+  <nav class="lang"><a href="#de">Deutsch</a> · <a href="#en">English</a></nav>
+</header>
+<main>
+<div class="hero">
+  <img src="../rhino-family.png" alt="" width="320" height="213">
+</div>
+
+<section class="lang" id="de" lang="de">
+<h1>Ein Rezept für dich</h1>
+<p>Jemand hat dir ein Rezept aus Rezept-Rhino geschickt. So übernimmst du es in deine Rezepte:</p>
+<div class="card">
+  <ol>
+    <li><a href="https://apps.apple.com/app/id6811577370">Rezept-Rhino laden</a> – kostenlos,
+    ohne Werbung, ohne Abo.</li>
+    <li>Melde dich an und lege deine Familie an.</li>
+    <li>Tippe danach <strong>noch einmal auf den Link</strong> in deiner Nachricht.</li>
+  </ol>
+  <p class="share-code" hidden>Klappt das nicht, gib in der App unter <strong>+ → Code
+  eingeben</strong> diesen Code ein: <code class="code"></code></p>
+</div>
+<p class="stand">Hast du Rezept-Rhino schon? Dann tippe auf <strong>Öffnen</strong> im Banner oben.</p>
+</section>
+
+<section class="lang" id="en" lang="en">
+<h1>A recipe for you</h1>
+<p>Someone sent you a recipe from Rezept-Rhino. Here is how to add it to your recipes:</p>
+<div class="card">
+  <ol>
+    <li><a href="https://apps.apple.com/app/id6811577370">Get Rezept-Rhino</a> — free, no ads,
+    no subscription.</li>
+    <li>Sign in and set up your family.</li>
+    <li>Then <strong>tap the link again</strong> in your message.</li>
+  </ol>
+  <p class="share-code" hidden>If that does not work, enter this code in the app under
+  <strong>+ → Enter Code</strong>: <code class="code"></code></p>
+</div>
+<p class="stand">Already have Rezept-Rhino? Tap <strong>Open</strong> in the banner at the top.</p>
+</section>
+</main>
+<footer><a href="../">Rezept-Rhino</a> · <a href="../datenschutz.html">Datenschutz / Privacy</a> · <a href="../impressum.html">Impressum / Legal notice</a></footer>
+<script>
+  (function () {
+    var code = window.rhinoShareCode;
+    if (!code) return;
+    var shown = code.slice(0, 4) + "-" + code.slice(4);
+    document.querySelectorAll(".share-code").forEach(function (p) {
+      p.querySelector(".code").textContent = shown;
+      p.hidden = false;
+    });
+  })();
+</script>
+</body>
+</html>
